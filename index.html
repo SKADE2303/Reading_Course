@@ -346,7 +346,7 @@
             <button class="map-button" onclick="showAcademicArea()">Focus on Academic Area</button>
             <button class="map-button" onclick="showHostelArea()">Focus on Hostel Area</button>
         </div>
-        <div id="map"></div>
+        <div id="map" style="height: 500px;"></div>
     </div>
 </section>
 
@@ -369,7 +369,7 @@
     // Initialize map
     const map = L.map('map', {
         center: [15.3910, 73.87720], // BITS Goa center coordinates
-        zoom: 100,
+        zoom: 16,
         minZoom: 11,
         maxZoom: 18,
         maxBounds: mapBounds.pad(0.1),
@@ -377,38 +377,42 @@
         preferCanvas: true
     });
 
-    // Add tile layer with better error handling
-    const baseLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    // Street Map Layer
+    const streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors',
         subdomains: ['a', 'b', 'c'],
         detectRetina: true,
         updateWhenIdle: true,
-        keepBuffer: 2,
-        errorTileUrl: 'https://cdn.jsdelivr.net/gh/leaflet/leaflet@master/dist/images/marker-icon.png'
+        keepBuffer: 2
+    });
+
+    // Satellite Map Layer (Esri World Imagery)
+    const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles © Esri — Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012',
+    });
+
+    // Add Street Map layer to the map by default
+    streetLayer.addTo(map);
+
+    // Layer control for toggling between Street and Satellite views
+    const layerControl = L.control.layers({
+        'Street Map': streetLayer,
+        'Satellite Map': satelliteLayer
     }).addTo(map);
-
-    // Add fallback layer in case primary fails
-    const fallbackLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-    });
-
-    baseLayer.on('tileerror', function(e) {
-        fallbackLayer.addTo(map);
-    });
 
     // Hostel Landmark Data
     const hostels = [
-    { position: [15.3921, 73.87850], name: "AH1", description: "Hostel Block AH1" },
-    { position: [15.3919, 73.87820], name: "AH2", description: "Hostel Block AH2" },
-    { position: [15.3910, 73.87720], name: "AH3", description: "Hostel Block AH3" },
-    { position: [15.3907, 73.87687], name: "AH4", description: "Hostel Block AH4" },
-    { position: [15.3903, 73.87655], name: "AH5", description: "Hostel Block AH5" },
-    { position: [15.3900, 73.87620], name: "AH6", description: "Hostel Block AH6" },
-    { position: [15.3920, 73.87773], name: "AH7", description: "Hostel Block AH7" },
-    { position: [15.3915, 73.87718], name: "AH8", description: "Hostel Block AH8" },
-    { position: [15.38975, 73.87600], name: "AH9", description: "Hostel Block AH9" },
-    { position: [15.3898, 73.8795], name: "CH7", description: "Hostel Block CH7" }
-];
+        { position: [15.3921, 73.87850], name: "AH1", description: "Hostel Block AH1" },
+        { position: [15.3919, 73.87820], name: "AH2", description: "Hostel Block AH2" },
+        { position: [15.3910, 73.87720], name: "AH3", description: "Hostel Block AH3" },
+        { position: [15.3907, 73.87687], name: "AH4", description: "Hostel Block AH4" },
+        { position: [15.3903, 73.87655], name: "AH5", description: "Hostel Block AH5" },
+        { position: [15.3900, 73.87620], name: "AH6", description: "Hostel Block AH6" },
+        { position: [15.3920, 73.87773], name: "AH7", description: "Hostel Block AH7" },
+        { position: [15.3915, 73.87718], name: "AH8", description: "Hostel Block AH8" },
+        { position: [15.38975, 73.87600], name: "AH9", description: "Hostel Block AH9" },
+        { position: [15.3898, 73.8795], name: "CH7", description: "Hostel Block CH7" }
+    ];
 
     // Add hostel markers
     hostels.forEach(hostel => {
@@ -433,25 +437,23 @@
             .bindPopup(`<b>${landmark.name}</b><br>${landmark.description}`);
     });
 
-
-
     // Navigation Functions
     function showFullRegion() {
-        map.setView([15.3950, 73.9823], 16, {
+        map.setView([15.3910, 73.87720], 16, {
             animate: true,
             duration: 1
         });
     }
 
     function showAcademicArea() {
-        map.setView([15.3926, 73.9953], 30, {
+        map.setView([15.3926, 73.8803], 17, {
             animate: true,
             duration: 1
         });
     }
 
     function showHostelArea() {
-        map.setView([15.3910, 73.87720], 30, {
+        map.setView([15.3910, 73.87720], 17, {
             animate: true,
             duration: 1
         });
@@ -459,17 +461,10 @@
 
     // Initial fit to bounds
     showFullRegion();
-
-    // Handle tile loading errors
-    map.on('baselayererror', function(e) {
-        console.log('Tile layer error, switching to fallback');
-        if (map.hasLayer(baseLayer)) {
-            map.removeLayer(baseLayer);
-            fallbackLayer.addTo(map);
-        }
-    });
 </script>
 <!--skills end -->
+
+
 
 
 
