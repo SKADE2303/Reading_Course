@@ -336,153 +336,141 @@
 		<!--education end -->
 
 		<!--skills start -->
-		<section id="map-section">
-			<div class="container">
-				<div class="section-heading">
-					<h2>Kalyan-Dombivili Region Map</h2>
-				</div>
-				<div class="map-controls">
-					<button class="map-button" onclick="showFullRegion()">Show Full Region</button>
-					<button class="map-button" onclick="showKalyan()">Focus on Kalyan</button>
-					<button class="map-button" onclick="showDombivili()">Focus on Dombivili</button>
-				</div>
-				<div id="map"></div>
-			</div>
-		</section>
-	
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
-		<script>
-			// Define the boundary coordinates
-			const bounds = {
-				north: 19.2603,
-				south: 19.1989,
-				east: 73.1505,
-				west: 73.0734
-			};
-	
-			// Create LatLngBounds object
-			const mapBounds = L.latLngBounds([
-				[bounds.south, bounds.west],
-				[bounds.north, bounds.east]
-			]);
-	
-			// Initialize map
-			const map = L.map('map', {
-				center: [19.2352, 73.1295],
-				zoom: 13,
-				minZoom: 11,  // Reduced minimum zoom for better tile loading
-				maxZoom: 18,
-				maxBounds: mapBounds.pad(0.1),  // Added padding to bounds
-				maxBoundsViscosity: 0.8,  // Slightly reduced for smoother panning
-				preferCanvas: true  // Better performance
-			});
-	
-			// Add tile layer with better error handling
-			const baseLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-				attribution: '© OpenStreetMap contributors',
-				subdomains: ['a', 'b', 'c'],
-				detectRetina: true,
-				updateWhenIdle: true,
-				keepBuffer: 2,
-				errorTileUrl: 'https://cdn.jsdelivr.net/gh/leaflet/leaflet@master/dist/images/marker-icon.png'
-			}).addTo(map);
-	
-			// Add fallback layer in case primary fails
-			const fallbackLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-				attribution: '© OpenStreetMap contributors'
-			});
-	
-			baseLayer.on('tileerror', function(e) {
-				fallbackLayer.addTo(map);
-			});
-	
-			// Landmark Data
-			const landmarks = [
-				{
-					position: [19.2403, 73.1305],
-					name: "Kalyan",
-					description: "Major transit hub"
-				},
-				{
-					position: [19.2189, 73.0934],
-					name: "Dombivili",
-					description: "Residential hub"
-				},
-				{
-					position: [19.2367, 73.1301],
-					name: "Kalyan Station",
-					description: "Major railway junction"
-				},
-				{
-					position: [19.2196, 73.0932],
-					name: "Dombivili Station",
-					description: "Railway station"
-				},
-				{
-					position: [19.2314, 73.1357],
-					name: "Kalyan Market",
-					description: "Commercial center"
-				},
-				{
-					position: [19.2145, 73.0954],
-					name: "Dombivili Market",
-					description: "Local market area"
-				}
-			];
-	
-			// Add markers
-			landmarks.forEach(landmark => {
-				L.marker(landmark.position)
-					.addTo(map)
-					.bindPopup(`<b>${landmark.name}</b><br>${landmark.description}`);
-			});
-	
-			// Add boundary rectangle
-			const boundaryRect = L.rectangle(mapBounds, {
-				color: '#2196F3',
-				weight: 2,
-				fillColor: '#2196F3',
-				fillOpacity: 0.1,
-				dashArray: '5, 5'  // Dashed border
-			}).addTo(map);
-	
-			// Navigation Functions
-			function showFullRegion() {
-				map.fitBounds(mapBounds, {
-					padding: [50, 50],
-					maxZoom: 13,
-					animate: true,
-					duration: 1
-				});
-			}
-	
-			function showKalyan() {
-				map.setView([19.2403, 73.1305], 14, {
-					animate: true,
-					duration: 1
-				});
-			}
-	
-			function showDombivili() {
-				map.setView([19.2189, 73.0934], 14, {
-					animate: true,
-					duration: 1
-				});
-			}
-	
-			// Initial fit to bounds
-			showFullRegion();
-	
-			// Handle tile loading errors
-			map.on('baselayererror', function(e) {
-				console.log('Tile layer error, switching to fallback');
-				if (map.hasLayer(baseLayer)) {
-					map.removeLayer(baseLayer);
-					fallbackLayer.addTo(map);
-				}
-			});
-		</script>
-		<!--skills end -->
+<section id="map-section">
+    <div class="container">
+        <div class="section-heading">
+            <h2>BITS Goa Campus Map</h2>
+        </div>
+        <div class="map-controls">
+            <button class="map-button" onclick="showFullRegion()">Show Full Campus</button>
+            <button class="map-button" onclick="showAcademicArea()">Focus on Academic Area</button>
+            <button class="map-button" onclick="showHostelArea()">Focus on Hostel Area</button>
+        </div>
+        <div id="map"></div>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script>
+    // Define the boundary coordinates for BITS Goa
+    const bounds = {
+        north: 15.3950,
+        south: 15.3751,
+        east: 73.8825,
+        west: 73.87600
+    };
+
+    // Create LatLngBounds object
+    const mapBounds = L.latLngBounds([
+        [bounds.south, bounds.west],
+        [bounds.north, bounds.east]
+    ]);
+
+    // Initialize map
+    const map = L.map('map', {
+        center: [15.3910, 73.87720], // BITS Goa center coordinates
+        zoom: 100,
+        minZoom: 11,
+        maxZoom: 18,
+        maxBounds: mapBounds.pad(0.1),
+        maxBoundsViscosity: 0.8,
+        preferCanvas: true
+    });
+
+    // Add tile layer with better error handling
+    const baseLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        subdomains: ['a', 'b', 'c'],
+        detectRetina: true,
+        updateWhenIdle: true,
+        keepBuffer: 2,
+        errorTileUrl: 'https://cdn.jsdelivr.net/gh/leaflet/leaflet@master/dist/images/marker-icon.png'
+    }).addTo(map);
+
+    // Add fallback layer in case primary fails
+    const fallbackLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    });
+
+    baseLayer.on('tileerror', function(e) {
+        fallbackLayer.addTo(map);
+    });
+
+    // Hostel Landmark Data
+    const hostels = [
+    { position: [15.3921, 73.87850], name: "AH1", description: "Hostel Block AH1" },
+    { position: [15.3919, 73.87820], name: "AH2", description: "Hostel Block AH2" },
+    { position: [15.3910, 73.87720], name: "AH3", description: "Hostel Block AH3" },
+    { position: [15.3907, 73.87687], name: "AH4", description: "Hostel Block AH4" },
+    { position: [15.3903, 73.87655], name: "AH5", description: "Hostel Block AH5" },
+    { position: [15.3900, 73.87620], name: "AH6", description: "Hostel Block AH6" },
+    { position: [15.3920, 73.87773], name: "AH7", description: "Hostel Block AH7" },
+    { position: [15.3915, 73.87718], name: "AH8", description: "Hostel Block AH8" },
+    { position: [15.38975, 73.87600], name: "AH9", description: "Hostel Block AH9" },
+    { position: [15.3898, 73.8795], name: "CH7", description: "Hostel Block CH7" }
+];
+
+    // Add hostel markers
+    hostels.forEach(hostel => {
+        L.marker(hostel.position)
+            .addTo(map)
+            .bindPopup(`<b>${hostel.name}</b><br>${hostel.description}`);
+    });
+
+    // Academic and other campus landmarks
+    const landmarks = [
+        {
+            position: [15.3926, 73.8803],
+            name: "Academic Block",
+            description: "Academic and administrative buildings"
+        },
+    ];
+
+    // Add other landmarks
+    landmarks.forEach(landmark => {
+        L.marker(landmark.position)
+            .addTo(map)
+            .bindPopup(`<b>${landmark.name}</b><br>${landmark.description}`);
+    });
+
+
+
+    // Navigation Functions
+    function showFullRegion() {
+        map.setView([15.3950, 73.9823], 16, {
+            animate: true,
+            duration: 1
+        });
+    }
+
+    function showAcademicArea() {
+        map.setView([15.3926, 73.9953], 30, {
+            animate: true,
+            duration: 1
+        });
+    }
+
+    function showHostelArea() {
+        map.setView([15.3910, 73.87720], 30, {
+            animate: true,
+            duration: 1
+        });
+    }
+
+    // Initial fit to bounds
+    showFullRegion();
+
+    // Handle tile loading errors
+    map.on('baselayererror', function(e) {
+        console.log('Tile layer error, switching to fallback');
+        if (map.hasLayer(baseLayer)) {
+            map.removeLayer(baseLayer);
+            fallbackLayer.addTo(map);
+        }
+    });
+</script>
+<!--skills end -->
+
 
 
 		<!--contact start -->
