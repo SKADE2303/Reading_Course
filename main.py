@@ -3,23 +3,19 @@ from flask import render_template
 import csv
 
 
-def read_hostel_data_from_csv(csv_filename):
-    hostel_data = []
+def data_from_csv(csv_filename):
+    data = []
     with open(csv_filename, mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
             row['position'] = list(map(float, row['position'].split(',')))
-            hostel_data.append(row)
-    return hostel_data
+            data.append(row)
+    return data
 
 
-csv_filename = 'Hostel_Data.csv'
-hostel_data = read_hostel_data_from_csv(csv_filename)
+hostel_data = data_from_csv('Hostel_Data.csv')
 
-landmark_data = [
-    {"position": [15.3926, 73.8803], "name": "Academic Block",
-     "description": "Solar Panel: 15.78% efficiency, 20kW capacity, 33.16kW output"},
-]
+landmark_data = data_from_csv('Landmark_Data.csv')
 
 app = Flask(__name__)
 
