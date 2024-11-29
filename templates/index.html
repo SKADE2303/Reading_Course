@@ -240,12 +240,8 @@
                   flex-wrap: wrap;
                 "
               >
-                <a href="static/download/Hostel_Data.csv" download
-                  >Hostel Data</a
-                >
-                <a href="static/download/Landmark_Data.csv" download
-                  >Landmark Data</a
-                >
+              <a style="color: #1a165a" href="static/download/Hostel_Data.csv" download>Hostel Data</a>
+							<a style="color: #1a165a" href="static/download/Landmark_Data.csv" download>Landmark Data</a>
               </div>
               <br />
               <br />
@@ -417,15 +413,9 @@
           <h2>BITS Goa Campus Map</h2>
         </div>
         <div class="map-controls">
-          <button class="map-button" onclick="showFullRegion()">
-            Show Full Campus
-          </button>
-          <button class="map-button" onclick="showAcademicArea()">
-            Focus on Academic Area
-          </button>
-          <button class="map-button" onclick="showHostelArea()">
-            Focus on Hostel Area
-          </button>
+          <button class="map-button" onclick="showFullRegion()" style = "background-color: #76c2e5">Show Full Campus</button>
+          <button class="map-button" onclick="showAcademicArea()" style = "background-color: #ed1c24">Focus on Academic Area</button>
+          <button class="map-button" onclick="showHostelArea()" style = "background-color: #f0a413">Focus on Hostel Area</button>
         </div>
         <div id="map" style="height: 500px"></div>
       </div>

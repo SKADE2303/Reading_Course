@@ -229,8 +229,8 @@ nav.navbar.bootsnav .navbar-toggle i{color: darkblue;}
     border-radius: 3px;
     text-transform: capitalize;
     color: #fff;
-    background: #b636ff;
-    border:1px solid #b636ff;
+    background: #76c2e5;
+    border:1px solid #76c2e5;
     box-shadow: 0 5px 20px rgba(0,0,0,.2);
     -webkit-transition: 0.3s linear; 
     -moz-transition: 0.3s linear; 
@@ -238,13 +238,14 @@ nav.navbar.bootsnav .navbar-toggle i{color: darkblue;}
     -o-transition: 0.3s linear; 
     transition: 0.3s linear;
 }
-.header-text a:hover{ box-shadow: 0 5px 20px rgba(0,0,0,.4);background:#9f00ff;border: 1px solid #9f00ff;}
+.header-text a:hover{ box-shadow: 0 5px 20px rgba(0,0,0,.4);background:#4c86a1;border: 1px solid #4c86a1;}
 /*.header-text-area*/
 
 /*-------------------------------------
         4.  About
 --------------------------------------*/
 .about {padding: 50px 0 100px;}
+
 /*.single-about-txt*/
 .single-about-txt h3 {
     font-size:18px;
@@ -385,7 +386,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 }
 .single-progress-txt h3 {
     width: 10%;
-    color: #a606c3;
+    color: #1a165a;
     position: relative;
     top: 6px;
     left: 20px;
@@ -420,7 +421,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 .tooltip > .tooltip-inner {
    background-color: transparent;
    padding: 1px 5px;
-   color: #b636ff;
+   color: #1a165a;
    font-weight: 500;
    font-size: 12px;
    border-radius: 0;
@@ -565,9 +566,9 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     width:100%;
     height: 100%;
     background: darkblue;
-    background: -moz-linear-gradient(left, darkblue 0%, #b636ff 100%);
-    background: -webkit-linear-gradient(left, darkblue 0%,#b636ff 100%);
-    background: linear-gradient(to right, darkblue 0%,#b636ff 100%);
+    background: -moz-linear-gradient(left, darkblue 0%, #1a165a 100%);
+    background: -webkit-linear-gradient(left, darkblue 0%,#1a165a 100%);
+    background: linear-gradient(to right, darkblue 0%,#1a165a 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='darkblue', endColorstr='#b636ff',GradientType=1 );
     -webkit-transform:scale(0);
     -moz-transform:scale(0);
@@ -794,7 +795,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     transition: .3s;
 }
 .hm-foot-icon ul li>a:hover{
-    color: #b636ff;
+    color: #1a165a;
 }/*hm-foot-icon*/
 
 .hm-footer-copyright p{
@@ -818,8 +819,8 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     font-size: 20px;
     cursor: pointer;
     color: #fff;
-    background:#b636ff;
-	border:1px solid #b636ff;
+    background:#1a165a;
+	border:1px solid #1a165a;
 	border-radius:50%;
 	-webkit-transition: .5s; 
 	-moz-transition:.5s; 
@@ -830,8 +831,8 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 }
 #scroll-Top  .return-to-top:hover {
     background:#fff;
-    color: #b636ff;
-	border:1px solid #b636ff;
+    color: #1a165a;
+	border:1px solid #1a165a;
 }
 
 #scroll-Top  .return-to-top i{
@@ -914,7 +915,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 
 /* Button Styles */
 .map-button {
-    background: #2196F3;
+    background: #1a165a;
     color: white;
     border: none;
     padding: 12px 24px;
