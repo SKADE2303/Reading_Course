@@ -1,502 +1,589 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="en">
+  <head>
+    <!-- meta data -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <head>
-        <!-- meta data -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!--font-family-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext"
+      rel="stylesheet"
+    />
 
-        <!--font-family-->
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
-        
-        <!-- title of site -->
-        <title>BITS Pilani Solar panel information</title>
+    <!-- title of site -->
+    <title>BITS Pilani Solar panel information</title>
 
-        <!-- For favicon png -->
-		<link rel="shortcut icon" type="image/icon" href="static/images/about/Ulhas_River.jpg"/>
-       
-        <!--font-awesome.min.css-->
-        <link rel="stylesheet" href="static/css/font-awesome.min.css">
+    <!-- For favicon png -->
+    <link
+      rel="shortcut icon"
+      type="image/icon"
+      href="static/images/about/Ulhas_River.jpg"
+    />
 
-		<!--flat icon css-->
-		<link rel="stylesheet" href="static/css/flaticon.css">
+    <!--font-awesome.min.css-->
+    <link rel="stylesheet" href="static/css/font-awesome.min.css" />
 
-		<!--animate.css-->
-        <link rel="stylesheet" href="static/css/animate.css">
+    <!--flat icon css-->
+    <link rel="stylesheet" href="static/css/flaticon.css" />
 
-        <!--owl.carousel.css-->
-        <link rel="stylesheet" href="static/css/owl.carousel.min.css">
-		<link rel="stylesheet" href="static/css/owl.theme.default.min.css">
-		
-        <!--bootstrap.min.css-->
-        <link rel="stylesheet" href="static/css/bootstrap.min.css">
-		
-		<!-- bootsnav -->
-		<link rel="stylesheet" href="static/css/bootsnav.css" >
-        
-        <!--style.css-->
-        <link rel="stylesheet" href="static/css/style.css">
-        
-        <!--responsive.css-->
-        <link rel="stylesheet" href="static/css/responsive.css">
-        
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		
-        <!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <!--animate.css-->
+    <link rel="stylesheet" href="static/css/animate.css" />
 
-        <![endif]-->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    <!--owl.carousel.css-->
+    <link rel="stylesheet" href="static/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="static/css/owl.theme.default.min.css" />
+
+    <!--bootstrap.min.css-->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" />
+
+    <!-- bootsnav -->
+    <link rel="stylesheet" href="static/css/bootsnav.css" />
+
+    <!--style.css-->
+    <link rel="stylesheet" href="static/css/style.css" />
+
+    <!--responsive.css-->
+    <link rel="stylesheet" href="static/css/responsive.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"
+    />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        #map-section {
-            padding: 50px 0;
-            background: #f9f9f9;
-            width: 100%;
-            min-height: 100vh;
-        }
+      #map-section {
+        padding: 50px 0;
+        background: #f9f9f9;
+        width: 100%;
+        min-height: 100vh;
+      }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
 
-        .section-heading {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+      .section-heading {
+        text-align: center;
+        margin-bottom: 30px;
+      }
 
-        .section-heading h2 {
-            color: #333;
-            font-size: 2em;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
+      .section-heading h2 {
+        color: #333;
+        font-size: 2em;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
 
+      #map {
+        height: 500px;
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        background: #f5f5f5;
+      }
+
+      .map-controls {
+        margin: 20px 0;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .map-button {
+        background: #2196f3;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 500;
+      }
+
+      .map-button:hover {
+        background: #1976d2;
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+      }
+
+      @media (max-width: 768px) {
         #map {
-            height: 500px;
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            background: #f5f5f5;
-        }
-
-        .map-controls {
-            margin: 20px 0;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+          height: 400px;
         }
 
         .map-button {
-            background: #2196F3;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 500;
+          padding: 10px 20px;
+          font-size: 12px;
         }
 
-        .map-button:hover {
-            background: #1976D2;
-            transform: translateY(-2px);
-            box-shadow: 0 2px 8px rgba(33,150,243,0.3);
+        .section-heading h2 {
+          font-size: 1.5em;
         }
-
-        @media (max-width: 768px) {
-            #map {
-                height: 400px;
-            }
-            
-            .map-button {
-                padding: 10px 20px;
-                font-size: 12px;
-            }
-            
-            .section-heading h2 {
-                font-size: 1.5em;
-            }
-        }
+      }
     </style>
-    </head>
-	
-	<body>
-		<!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-		
-		<!-- top-area Start -->
-		<header class="top-area" style="background-color: purple;">
-			<div class="header-area">
-				<!-- Start Navigation -->
-				<nav class="navbar navbar-default bootsnav navbar-fixed dark no-background">
+  </head>
 
-					<div class="container">
+  <body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
 
-						<!-- Start Header Navigation -->
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-								<i class="fa fa-bars"></i>
-							</button>
-							<a class="navbar-brand" href="#">BITS Goa Solar panel data information</a>
-						</div><!--/.navbar-header-->
-						<!-- End Header Navigation -->
+    <!-- top-area Start -->
+    <header class="top-area" style="background-color: purple">
+      <div class="header-area">
+        <!-- Start Navigation -->
+        <nav
+          class="navbar navbar-default bootsnav navbar-fixed dark no-background"
+        >
+          <div class="container">
+            <div
+              class="navbar-header d-flex justify-content-between align-items-center"
+            >
+              <button
+                type="button"
+                class="navbar-toggle"
+                data-toggle="collapse"
+                data-target="#navbar-menu"
+              >
+                <i class="fa fa-bars fs-4"></i>
+              </button>
+              <a class="navbar-brand text-truncate fw-bold" href="#">
+                <span class="header-text-responsive">BITS Goa Solar Info</span>
+              </a>
+            </div>
 
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
-							<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-							<li class=" smooth-menu active"></li>
-								<li class=" smooth-menu"><a href="#about">About</a></li>
-								<li class="smooth-menu"><a href="#timeline-section">Timeline</a></li>
-								<li class="smooth-menu"><a href="#map-section">Map</a></li>
-							</ul><!--/.nav -->
-						</div><!-- /.navbar-collapse -->
-					</div><!--/.container-->
-				</nav><!--/nav-->
-				<!-- End Navigation -->
-			</div><!--/.header-area-->
+            <!-- End Header Navigation -->
 
-			<div class="clearfix"></div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div
+              class="collapse navbar-collapse menu-ui-design"
+              id="navbar-menu"
+            >
+              <ul
+                class="nav navbar-nav navbar-right"
+                data-in="fadeInDown"
+                data-out="fadeOutUp"
+              >
+                <li class="smooth-menu active"></li>
+                <li class="smooth-menu"><a href="#about">About</a></li>
+                <li class="smooth-menu">
+                  <a href="#timeline-section">Timeline</a>
+                </li>
+                <li class="smooth-menu"><a href="#map-section">Map</a></li>
+              </ul>
+              <!--/.nav -->
+            </div>
+            <!-- /.navbar-collapse -->
+          </div>
+          <!--/.container-->
+        </nav>
+        <!--/nav-->
+        <!-- End Navigation -->
+      </div>
+      <!--/.header-area-->
 
-		</header><!-- /.top-area-->
-		<!-- top-area End -->
-	
-		<!--welcome-hero start -->
-		<section id="welcome-hero" class="welcome-hero" style="background: url('static/images/about/campus2.jpg') no-repeat center center/cover;">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<div class="header-text">
-							<h2>Welcome! Ready to explore <br>Solar Panel Data <span>?</span>  <br> </h2>
-							<a style="color: #1a165a" href="static/download/Hostel_Data.csv" download>Hostel Data</a>
-							<a style="color: #1a165a" href="static/download/Landmark_Data.csv" download>Landmark Data</a>
-							<br>
-							<br>
-						</div><!--/.header-text-->
-					</div><!--/.col-->
-				</div><!-- /.row-->
-			</div><!-- /.container-->
-		</section><!--/.welcome-hero-->
-		<!--welcome-hero end -->
+      <div class="clearfix"></div>
+    </header>
+    <!-- /.top-area-->
+    <!-- top-area End -->
 
-		<!--about start -->
-		<section id="about" class="about">
-			<div class="section-heading text-center">
-				<h2>about this website</h2>
-			</div>
-			<div class="container">
-				<div class="about-content">
-					<div class="row" style="display: flex; align-items: center;">
-						<div class="col-sm-12">
-							<div class="single-about-txt">
-								<h3>
-									This website was created with the purpose of providing detailed information about solar panel installations at BITS Pilani.
-								</h3>
-								<p>
-									A website that tracks and displays solar panel data is essential for promoting renewable energy awareness and education. By providing comprehensive data on solar panel installations, energy production, and efficiency, this tool helps students, researchers, and the general public understand the impact of solar energy on campus. This information supports academic projects, sustainability initiatives, and can inspire further adoption of renewable energy solutions. With accurate and up-to-date solar panel data, informed decisions can be made to enhance energy management and environmental conservation efforts.
-								</p>
-								<div class="row">
-									<div class="col-sm-3">
-										<div class="single-about-add-info">
-											<h3>Contributors</h3>
-											<p>Aditya Bagla</p>
-											<p>Saket Hatwar</p>
-										</div>
-									</div>
-									<div class="col-sm-3">
-										<div class="single-about-add-info">
-											<h3>&nbsp;</h3>
-											<p>Nihal Dwivedi</p>
-											<p>Tarun Chauhan</p>
-										</div>
-									</div>
-									<div class="col-sm-3">
-										<div class="single-about-add-info">
-											<h3>&nbsp;</h3>
-											<p>Gautam</p>
-											<p>Pray Raskapoorwala</p>
-										</div>
-									</div>
-									<div class="col-sm-3">
-										<div class="single-about-add-info">
-											<h3>&nbsp;</h3>
-											<p>Nikhil Sheoran</p>
-											<p>Utkarsh Mishra</p>
-										</div>
-									</div>
-								</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section><!--/.about-->
-		<!--about end -->
-		
-		<!--education start -->
+    <!--welcome-hero start -->
+    <section
+      id="welcome-hero"
+      class="welcome-hero"
+      style="
+        background: url('static/images/about/campus2.jpg') no-repeat center
+          center/cover;
+      "
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <div class="header-text">
+              <h2 class="header-text-responsive">
+                Welcome! Ready to explore <br />Solar Panel Data? <br />
+              </h2>
+              <div
+                style="
+                  display: flex;
+                  gap: 2rem;
+                  justify-content: center;
+                  flex-wrap: wrap;
+                "
+              >
+                <a href="static/download/Hostel_Data.csv" download
+                  >Hostel Data</a
+                >
+                <a href="static/download/Landmark_Data.csv" download
+                  >Landmark Data</a
+                >
+              </div>
+              <br />
+              <br />
+            </div>
+            <!--/.header-text-->
+          </div>
+          <!--/.col-->
+        </div>
+        <!-- /.row-->
+      </div>
+      <!-- /.container-->
+    </section>
+    <!--/.welcome-hero-->
+    <!--welcome-hero end -->
 
-		<section id="timeline-section"><!--/.education-->
-		<div class="section-heading text-center">
-			<h2>Solar Panel Installations</h2>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="single-horizontal-timeline">
-						<div class="experience-time">
-							<h2>2012 - March</h2>
-							<h3>Main Building Installation</h3>
-						</div>
-						<div class="timeline-horizontal-border">
-							<i class="fa fa-circle" aria-hidden="true"></i>
-							<span class="single-timeline-horizontal"></span>
-						</div>
-						<div class="timeline">
-							<div class="timeline-content">
-								<h4 class="title">Main Building</h4>
-								<h5>BITS Pilani, Goa Campus</h5>
-								<p class="description">
-									Installation of 100 solar panels on the roof of the main building, generating approximately 50 kW of power.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="single-horizontal-timeline">
-						<div class="experience-time">
-							<h2>2014 - November</h2>
-							<h3>Library Installation</h3>
-						</div>
-						<div class="timeline-horizontal-border">
-							<i class="fa fa-circle" aria-hidden="true"></i>
-							<span class="single-timeline-horizontal"></span>
-						</div>
-						<div class="timeline">
-							<div class="timeline-content">
-								<h4 class="title">Library</h4>
-								<h5>BITS Pilani, Goa Campus</h5>
-								<p class="description">
-									Installation of 50 solar panels on the library roof, generating approximately 25 kW of power.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="single-horizontal-timeline">
-						<div class="experience-time">
-							<h2>2016 -June</h2>
-							<h3>Hostel Installation</h3>
-						</div>
-						<div class="timeline-horizontal-border">
-							<i class="fa fa-circle" aria-hidden="true"></i>
-							<span class="single-timeline-horizontal spacial-horizontal-line"></span>
-						</div>
-						<div class="timeline">
-							<div class="timeline-content">
-								<h4 class="title">Hostel Buildings</h4>
-								<h5>BITS Pilani, Goa Campus</h5>
-								<p class="description">
-									Installation of 200 solar panels across various hostel buildings, generating approximately 100 kW of power.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--education end -->
+    <!--about start -->
+    <section id="about" class="about">
+      <div class="section-heading text-center">
+        <h2>about this website</h2>
+      </div>
+      <div class="container">
+        <div class="">
+          <div class="row" style="display: flex; align-items: center">
+            <div class="col-sm-12">
+              <div class="single-about-txt">
+                <h3>
+                  This website was created with the purpose of providing
+                  detailed information about solar panel installations at BITS
+                  Pilani.
+                </h3>
+                <p>
+                  A website that tracks and displays solar panel data is
+                  essential for promoting renewable energy awareness and
+                  education. By providing comprehensive data on solar panel
+                  installations, energy production, and efficiency, this tool
+                  helps students, researchers, and the general public understand
+                  the impact of solar energy on campus. This information
+                  supports academic projects, sustainability initiatives, and
+                  can inspire further adoption of renewable energy solutions.
+                  With accurate and up-to-date solar panel data, informed
+                  decisions can be made to enhance energy management and
+                  environmental conservation efforts.
+                </p>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="single-about-add-info">
+                      <h3>Contributors</h3>
+                      <p>Aditya Bagla</p>
+                      <p>Saket Hatwar</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="single-about-add-info">
+                      <h3>&nbsp;</h3>
+                      <p>Nihal Dwivedi</p>
+                      <p>Tarun Chauhan</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="single-about-add-info">
+                      <h3>&nbsp;</h3>
+                      <p>Nikhil Sheoran</p>
+                      <p>Utkarsh Misra</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="single-about-add-info">
+                      <h3>&nbsp;</h3>
+                      <p>Gautam</p>
+                      <p>Pray Raskapoorwala</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/.about-->
+    <!--about end -->
 
-		<!--skills start -->
-<section id="map-section">
-    <div class="container">
+    <!--education start -->
+
+    <section id="timeline-section">
+      <!--/.education-->
+      <div class="section-heading text-center">
+        <h2>Solar Panel Installations</h2>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="single-horizontal-timeline">
+              <div class="experience-time">
+                <h2>2012 - March</h2>
+                <h3>Main Building Installation</h3>
+              </div>
+              <div class="timeline-horizontal-border">
+                <i class="fa fa-circle" aria-hidden="true"></i>
+                <span class="single-timeline-horizontal"></span>
+              </div>
+              <div class="timeline">
+                <div class="timeline-content">
+                  <h4 class="title">Main Building</h4>
+                  <h5>BITS Pilani, Goa Campus</h5>
+                  <p class="description">
+                    Installation of 100 solar panels on the roof of the main
+                    building, generating approximately 50 kW of power.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="single-horizontal-timeline">
+              <div class="experience-time">
+                <h2>2014 - November</h2>
+                <h3>Library Installation</h3>
+              </div>
+              <div class="timeline-horizontal-border">
+                <i class="fa fa-circle" aria-hidden="true"></i>
+                <span class="single-timeline-horizontal"></span>
+              </div>
+              <div class="timeline">
+                <div class="timeline-content">
+                  <h4 class="title">Library</h4>
+                  <h5>BITS Pilani, Goa Campus</h5>
+                  <p class="description">
+                    Installation of 50 solar panels on the library roof,
+                    generating approximately 25 kW of power.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="single-horizontal-timeline">
+              <div class="experience-time">
+                <h2>2016 -June</h2>
+                <h3>Hostel Installation</h3>
+              </div>
+              <div class="timeline-horizontal-border">
+                <i class="fa fa-circle" aria-hidden="true"></i>
+                <span
+                  class="single-timeline-horizontal spacial-horizontal-line"
+                ></span>
+              </div>
+              <div class="timeline">
+                <div class="timeline-content">
+                  <h4 class="title">Hostel Buildings</h4>
+                  <h5>BITS Pilani, Goa Campus</h5>
+                  <p class="description">
+                    Installation of 200 solar panels across various hostel
+                    buildings, generating approximately 100 kW of power.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--education end -->
+
+    <!--skills start -->
+    <section id="map-section">
+      <div class="container">
         <div class="section-heading">
-            <h2>BITS Goa Campus Map</h2>
+          <h2>BITS Goa Campus Map</h2>
         </div>
         <div class="map-controls">
-            <button class="map-button" onclick="showFullRegion()" style = "background-color: #76c2e5">Show Full Campus</button>
-            <button class="map-button" onclick="showAcademicArea()" style = "background-color: #ed1c24">Focus on Academic Area</button>
-            <button class="map-button" onclick="showHostelArea()" style = "background-color: #f0a413">Focus on Hostel Area</button>
+          <button class="map-button" onclick="showFullRegion()">
+            Show Full Campus
+          </button>
+          <button class="map-button" onclick="showAcademicArea()">
+            Focus on Academic Area
+          </button>
+          <button class="map-button" onclick="showHostelArea()">
+            Focus on Hostel Area
+          </button>
         </div>
-        <div id="map" style="height: 500px;"></div>
-    </div>
-</section>
+        <div id="map" style="height: 500px"></div>
+      </div>
+    </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
-<script>
-    // Define the boundary coordinates for BITS Goa
-    const bounds = {
-        north: 15.3950,
-        south: 15.3751,
-        east: 73.8825,
-        west: 73.87600
-    };
-
-    // Create LatLngBounds object
-    const mapBounds = L.latLngBounds([
-        [bounds.south, bounds.west],
-        [bounds.north, bounds.east]
-    ]);
-
-    // Initialize map
-    const map = L.map('map', {
-        center: [15.3910, 73.87720], // BITS Goa center coordinates
-        zoom: 16,
-        minZoom: 11,
-        maxZoom: 18,
-        maxBounds: mapBounds.pad(0.1),
-        maxBoundsViscosity: 0.8,
-        preferCanvas: true
-    });
-
-    // Street Map Layer
-    const streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors',
-        subdomains: ['a', 'b', 'c'],
-        detectRetina: true,
-        updateWhenIdle: true,
-        keepBuffer: 2
-    });
-
-    // Satellite Map Layer (Esri World Imagery)
-    const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        attribution: 'Tiles © Esri — Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012',
-    });
-
-    // Add Street Map layer to the map by default
-    streetLayer.addTo(map);
-
-    // Layer control for toggling between Street and Satellite views
-    const layerControl = L.control.layers({
-        'Street Map': streetLayer,
-        'Satellite Map': satelliteLayer
-    }).addTo(map);
-
-    // Hostel Landmark Data
-    const hostels = {{ hostels | tojson }};
-
-    // Add hostel markers
-    hostels.forEach(hostel => {
-        L.marker(hostel.position)
-            .addTo(map)
-            .bindPopup(`<b>${hostel.name}</b><br>${hostel.description}`);
-    });
-
-    // Academic and other campus landmarks
-    const landmarks = {{ landmarks | tojson }}
-
-    // Add other landmarks
-    landmarks.forEach(landmark => {
-        L.marker(landmark.position)
-            .addTo(map)
-            .bindPopup(`<b>${landmark.name}</b><br>${landmark.description}`);
-    });
-
-    // Navigation Functions
-    function showFullRegion() {
-        map.setView([15.3910, 73.87720], 16, {
-            animate: true,
-            duration: 1
-        });
-    }
-
-    function showAcademicArea() {
-        map.setView([15.3926, 73.8803], 17, {
-            animate: true,
-            duration: 1
-        });
-    }
-
-    function showHostelArea() {
-        map.setView([15.3910, 73.87720], 17, {
-            animate: true,
-            duration: 1
-        });
-    }
-
-    // Initial fit to bounds
-    showFullRegion();
-</script>
-<!--skills end -->
-
-		<!--footer-copyright start-->
-		<footer id="footer-copyright" class="footer-copyright">
-			<div class="container">
-				<div class="hm-footer-copyright text-center">
-					<p>
-						&copy; copyright @ <a href="https://www.themesine.com/">BITS Pilani</a>
-					</p><!--/p-->
-				</div><!--/.text-center-->
-			</div><!--/.container-->
-
-			<div id="scroll-Top">
-				<div class="return-to-top">
-					<i class="fa fa-angle-up " id="scroll-top" ></i>
-				</div>
-				
-			</div><!--/.scroll-Top-->
-			
-        </footer><!--/.footer-copyright-->
-		<!--footer-copyright end-->
-		
-		<!-- Include all js compiled plugins (below), or include individual files as needed -->
-
-		<script src="static/js/jquery.js"></script>
-        
-        <!--modernizr.min.js-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-		
-		<!--bootstrap.min.js-->
-        <script src="static/js/bootstrap.min.js"></script>
-		
-		<!-- bootsnav js -->
-		<script src="static/js/bootsnav.js"></script>
-		
-		<!-- jquery.sticky.js -->
-		<script src="static/js/jquery.sticky.js"></script>
-		
-		<!-- for progress bar start-->
-
-		<!-- progressbar js -->
-		<script src="static/js/progressbar.js"></script>
-
-		<!-- appear js -->
-		<script src="static/js/jquery.appear.js"></script>
-
-		<!-- for progress bar end -->
-
-		<!--owl.carousel.js-->
-        <script src="static/js/owl.carousel.min.js"></script>
-
-
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-		
-        
-        <!--Custom JS-->
-        <script src="static/js/custom.js"></script>
-        
-    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+	<script>
+		// Define the boundary coordinates for BITS Goa
+		const bounds = {
+			north: 15.3950,
+			south: 15.3751,
+			east: 73.8825,
+			west: 73.87600
+		};
 	
+		// Create LatLngBounds object
+		const mapBounds = L.latLngBounds([
+			[bounds.south, bounds.west],
+			[bounds.north, bounds.east]
+		]);
+	
+		// Initialize map
+		const map = L.map('map', {
+			center: [15.3910, 73.87720], // BITS Goa center coordinates
+			zoom: 16,
+			minZoom: 11,
+			maxZoom: 18,
+			maxBounds: mapBounds.pad(0.1),
+			maxBoundsViscosity: 0.8,
+			preferCanvas: true
+		});
+	
+		// Street Map Layer
+		const streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+			attribution: '© OpenStreetMap contributors',
+			subdomains: ['a', 'b', 'c'],
+			detectRetina: true,
+			updateWhenIdle: true,
+			keepBuffer: 2
+		});
+	
+		// Satellite Map Layer (Esri World Imagery)
+		const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles © Esri — Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012',
+		});
+	
+		// Add Street Map layer to the map by default
+		streetLayer.addTo(map);
+	
+		// Layer control for toggling between Street and Satellite views
+		const layerControl = L.control.layers({
+			'Street Map': streetLayer,
+			'Satellite Map': satelliteLayer
+		}).addTo(map);
+	
+		// Hostel Landmark Data
+		const hostels = {{ hostels | tojson }};
+	
+		// Add hostel markers
+		hostels.forEach(hostel => {
+			L.marker(hostel.position)
+				.addTo(map)
+				.bindPopup(`<b>${hostel.name}</b><br>${hostel.description}`);
+		});
+	
+		// Academic and other campus landmarks
+		const landmarks = {{ landmarks | tojson }}
+	
+		// Add other landmarks
+		landmarks.forEach(landmark => {
+			L.marker(landmark.position)
+				.addTo(map)
+				.bindPopup(`<b>${landmark.name}</b><br>${landmark.description}`);
+		});
+	
+		// Navigation Functions
+		function showFullRegion() {
+			map.setView([15.3910, 73.87720], 16, {
+				animate: true,
+				duration: 1
+			});
+		}
+	
+		function showAcademicArea() {
+			map.setView([15.3926, 73.8803], 17, {
+				animate: true,
+				duration: 1
+			});
+		}
+	
+		function showHostelArea() {
+			map.setView([15.3910, 73.87720], 17, {
+				animate: true,
+				duration: 1
+			});
+		}
+	
+		// Initial fit to bounds
+		showFullRegion();
+	</script>
+    <!--skills end -->
+
+    <!--footer-copyright start-->
+    <footer id="footer-copyright" class="footer-copyright">
+      <div class="container">
+        <div class="hm-footer-copyright text-center">
+          <p>
+            &copy; copyright @
+            <a href="https://www.themesine.com/">BITS Pilani</a>
+          </p>
+          <!--/p-->
+        </div>
+        <!--/.text-center-->
+      </div>
+      <!--/.container-->
+
+      <div id="scroll-Top">
+        <div class="return-to-top">
+          <i class="fa fa-angle-up" id="scroll-top"></i>
+        </div>
+      </div>
+      <!--/.scroll-Top-->
+    </footer>
+    <!--/.footer-copyright-->
+    <!--footer-copyright end-->
+
+    <!-- Include all js compiled plugins (below), or include individual files as needed -->
+
+    <script src="static/js/jquery.js"></script>
+
+    <!--modernizr.min.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+    <!--bootstrap.min.js-->
+    <script src="static/js/bootstrap.min.js"></script>
+
+    <!-- bootsnav js -->
+    <script src="static/js/bootsnav.js"></script>
+
+    <!-- jquery.sticky.js -->
+    <script src="static/js/jquery.sticky.js"></script>
+
+    <!-- for progress bar start-->
+
+    <!-- progressbar js -->
+    <script src="static/js/progressbar.js"></script>
+
+    <!-- appear js -->
+    <script src="static/js/jquery.appear.js"></script>
+
+    <!-- for progress bar end -->
+
+    <!--owl.carousel.js-->
+    <script src="static/js/owl.carousel.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+    <!--Custom JS-->
+    <script src="static/js/custom.js"></script>
+  </body>
 </html>
