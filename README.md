@@ -60,7 +60,7 @@ You can contribute by providing data, helping with maintenance, or spreading awa
 
 ## Contact
 
-For more information or inquiries, please contact us at [solarinfo@bits-pilani.ac.in](mailto:solarinfo@bits-pilani.ac.in).
+For more information or inquiries, please contact us at [solarinfo@bits-pilani.ac.in](temp).
 
 ## License
 
